@@ -271,11 +271,11 @@ int main(int argc, char ** argv)
 	choice[1] = '\0';
 	if(argc==1){
 		puts("Welcome to the shop! Your balance is $10, have fun~\n");
-		puts("  (a) hello kitty                    $10");
-		puts("  (b) flag for hello kitty           $10");
-		puts("  (c) flag for flag shop             $999");
-		puts("  (d) flag for babySQL               FREE");
-		printf("Now tell me what do you want to buy: ");
+		puts("  (a) hello kitty                   $10");
+		puts("  (b) flag of hello kitty           $10");
+		puts("  (c) flag of dummy shop            $999");
+		puts("  (d) flag of babySQL               FREE");
+		printf("Now tell me what do you want to buy(a/b): ");
 		read(0, choice, 1);
 		printf("transcation id: %s\n", username);
 	}else if(argc==2){
@@ -286,6 +286,9 @@ int main(int argc, char ** argv)
 		memset(kitty, '\0', 1024);
 		get_kitty(kitty);
 		printf("%s", kitty);
+	}
+	else if(!strncmp(choice,"d",1)){
+		puts("BCTF{Hel1oKitty&BEAST}");
 	}
 	else if(!strncmp(choice,"b",1)){
 		sendtoserver(username);
@@ -332,29 +335,29 @@ int main(int argc, char ** argv)
 	    if (EC_POINT_oct2point(EC_KEY_get0_group(lKey), pkey_pub, buffer, pubkeylen, bnctx) != 1) {
 	        die("buffer_get_bignum2_ret: BN_bin2bn failed\n");
 	    }	
-		char kitty[256];
+		char kitty[512];
 		char *signature = "sth to be checked";
-		memset(kitty, '\0', sizeof(char)*256);
+		memset(kitty, '\0', sizeof(char)*512);
 		recvfromserver(kitty);
 	    // shop and client compute the shared key
 	    lSecretLen = EC_DH(&lSecret, lKey, pkey_pub);
 	    // printf("ECDH shared key: ");
 	    // hex_print(lSecret, lSecretLen);
-		if(verify(kitty, lSecret, lSecretLen, signature)){
+		char message[512];
+		memset(message,'\0',512);
+		strcat(message, kitty);
+		if(verify(message, lSecret, lSecretLen, signature)){
 			puts("purchase completed...");
 		}else{
 			puts("cargo inspection failed...");
 		}
+		close(client_socket);
 	}
 	else if(!strncmp(choice,"c",1)){
 		puts("lazy retailer: You only have $10, I know it!");
 	}
-	else if(!strncmp(choice,"d",1)){
-		puts("BCTF{Hel1oKitty&BEAST}");
-	}
 	else{
 		puts("Invaid input!");
 	}
-	close(client_socket);
 	return 0;
 }
