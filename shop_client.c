@@ -288,7 +288,7 @@ int main(int argc, char ** argv)
 		printf("%s", kitty);
 	}
 	else if(!strncmp(choice,"d",1)){
-		puts("BCTF{Hel1oKitty&BEAST}");
+		puts("BCTF{8572160a2bc7743ad02b539f74c24917}");
 	}
 	else if(!strncmp(choice,"b",1)){
 		sendtoserver(username);
