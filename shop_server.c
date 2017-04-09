@@ -323,7 +323,7 @@ int recvfromwalletuntil(char *msg, int msglen, int wallet_socket){
 			continue;
 		}
 		recvfromwalletuntil(key, PUB_KEYLEN*2+1, wallet_socket);
-
+		printf("%s %s\n",username,response);
 
 		char signature[128];
 		memset(signature, '\0', 128);
