@@ -369,14 +369,14 @@ int recvfromwalletuntil(char *msg, int msglen, int wallet_socket){
 			memset(kitty, '\0', 1024);
 			memset(resp, '\0', 1024);
 			if(option[0]=='b' && !strncmp(response,"accept",6) ){
-				char *flag = "BCTF{3854a2d204433f9843e364d89fff500b}signature: ";
+				char *flag = "bctf{3854a2d204433f9843e364d89fff500b}signature: ";
 				sign(flag, Secret, PUB_KEYLEN, signature);
 				strcat(resp, flag);
 				strcat(resp, signature);
 				//printf("response: ***%s***\nwallet time: ***%s***\nsignature: ***%s***\n", response, timestampw, signature);
 				sendtoclient(resp, client_socket);
 			}else if(option[0]=='c' && !strncmp(response,"accept",6) ){
-				char *flag = "BCTF{0af9e55648a4cab8ac97648a5d0b7059}signature: ";
+				char *flag = "bctf{0af9e55648a4cab8ac97648a5d0b7059}signature: ";
 				sign(flag, Secret, PUB_KEYLEN, signature);
 				strcat(resp, flag);
 				strcat(resp, signature);
