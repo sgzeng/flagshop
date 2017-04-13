@@ -273,9 +273,9 @@ int main(int argc, char ** argv)
 		puts("Welcome to the shop! Your balance is $10, have fun~\n");
 		puts("  (a) hello kitty                   $10");
 		puts("  (b) flag of hello kitty           $10");
-		puts("  (c) flag of dummy shop            $999");
+		puts("  (c) flag of flag shop            $999");
 		puts("  (d) flag of babySQL               FREE");
-		printf("Now tell me what do you want to buy(a/b): ");
+		printf("Now tell me what do you want to buy: ");
 		read(0, choice, 1);
 		printf("transcation id: %s\n", username);
 	}else if(argc==2){
