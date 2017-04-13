@@ -272,7 +272,7 @@ int recvfromshopuntil(char *msg, int shop_socket){
 	close(new_server_socket);
 	char c = option[0];
 	if(c == 'b'){
-	        int shop_socket = connecttoshop();
+	    int shop_socket = connecttoshop();
 		char t[16];
 		time_t time_now = time(NULL);
 		sprintf(t, "%ld", time_now);
@@ -306,11 +306,11 @@ int recvfromshopuntil(char *msg, int shop_socket){
 
 		//printf("str sending to the shop: %s\n", str);
 		sendtoclient(str,shop_socket);
-                close(shop_socket);
+		close(shop_socket);
 
 	}else if(c == 'c'){
 		sleep(2);
-	        int shop_socket = connecttoshop();
+	    int shop_socket = connecttoshop();
 		char t[16];
 		time_t time_now = time(NULL);
 		sprintf(t, "%ld", time_now);
@@ -337,7 +337,7 @@ int recvfromshopuntil(char *msg, int shop_socket){
 		sign(str, Secret, PUB_KEYLEN, signature);
 		strcat(str, signature);
 		sendtoclient(str,shop_socket);
-	        close(shop_socket);
+		close(shop_socket);
 	}else{
                 return;
 		//sendtoclient("Invaid input!\n",shop_socket);

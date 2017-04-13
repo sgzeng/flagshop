@@ -26,8 +26,8 @@
 #define MAC_LENGTH 20
 #define PUB_KEYLEN 65
 
-//char* SERVER_HOST_NAME = "202.112.51.211";
-char* SERVER_HOST_NAME = "127.0.0.1";
+char* SERVER_HOST_NAME = "202.112.51.232";
+// char* SERVER_HOST_NAME = "127.0.0.1";
 int SERVER_HOST_PORT_NO = 8080;
 int client_socket;
 
